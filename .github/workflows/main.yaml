@@ -11,28 +11,16 @@ jobs:
     runs-on: 'ubuntu-latest'
     
     steps:
-      - name: Set outpue value 1
+      - name: Mask output value
         id: first
         shell: bash
         run: |
-          value1='This is the First value'
+          value1='This is the super secret value'
 
+          echo "::add-mask::$value1"
           echo "::set-output name=first_value::$value1"
 
-      - name: Set outpue value 2
-        id: second
-        shell: pwsh
-        run: |
-          $value2 = 'This is the Second value'
-
-          echo "::set-output name=second_value::$value2"
-
       - name: Check output value
         shell: bash
         run: |
-          echo "first value ${{ steps.first.outputs.first_value }}"
-
-      - name: Check output value
-        shell: bash
-        run: |
-          echo "second value ${{ steps.second.outputs.second_value }}"
+          echo "value: ${{ steps.first.outputs.first_value }}"
