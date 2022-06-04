@@ -14,4 +14,4 @@ jobs:
       - name: "Say Lorem Ipsum 1"
         shell: push
         run : |
-         echo "Lorem Ipsum from step #2"
+          echo "Lorem Ipsum from step #2"
